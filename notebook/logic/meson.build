@@ -1,38 +1,20 @@
 # Collect all source files using wildcard.py
-logic_cards = run_command(
-    ['python3', '..' / 'tools' / 'wildcard.py'],
-    check: true
-)
+logic_cards = run_command(['python3', '..' / 'tools' / 'wildcard.py'], check: true)
+logic_names = run_command(['python3', '..' / 'tools' / 'basename.py'], check: true)
 
 # Split stdout into a list of filenames
 all_sources = logic_cards.stdout().strip().split('\n')
 
-# Filter only .c, .cpp, .m, .mm files
-logic_source = []
-foreach f : all_sources
-    ext = f.split('.')[-1]
-    if ext == 'c' or ext == 'cpp' or ext == 'm' or ext == 'mm'
-        logic_source += [f]
-    endif
-endforeach
+# Use logic_names from basename.py for executable names
+all_names   = logic_names.stdout().strip().split('\n')
 
-# Map extensions to suffixes for executable names
-suffix_map = {
-    'c': '_c',
-    'cpp': '_cpp',
-    'm': '_objc',
-    'mm': '_objcpp'
-}
-
-# Create an executable for each source file
-foreach src : logic_source
-    fname = files(src).name()
-    ext = files(src).extension()
-    exe_name = fname.replace(ext, '') + suffix_map[ext]
+# Create an executable for each source file using names from logic_names
+foreach i : range(0, all_sources.length())
+    src = all_sources[i]
+    exe_name = all_names[i]
     executable(
         exe_name,
         src,
-        include_directories: include_directories('.'),
         dependencies: [dependency('fossil-io')]
     )
 endforeach
