@@ -32,6 +32,7 @@ foreach src : logic_source
     executable(
         exe_name,
         src,
+        include_directories: include_directories('.'),
         dependencies: [dependency('fossil-io')]
     )
 endforeach

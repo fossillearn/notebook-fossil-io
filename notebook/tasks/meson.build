@@ -26,7 +26,8 @@ endforeach
 challenge = executable(
     'notebook',
     tasks_source,
-    dependencies: [dependency('fossil-test')]
+    include_directories: include_directories('.'),
+    dependencies: [dependency('fossil-test'), dependency('fossil-io')]
 )
 
 # Add test
