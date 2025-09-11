@@ -3,6 +3,9 @@
 
 FOSSIL_SUITE(c_cli_parser_challenges);
 
+FOSSIL_SETUP(c_cli_parser_challenges) { }
+FOSSIL_TEARDOWN(c_cli_parser_challenges) { }
+
 // --------------------------------------
 // Challenge 1: Create a Palette
 // --------------------------------------
