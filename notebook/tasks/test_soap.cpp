@@ -1,15 +1,15 @@
 #include <fossil/pizza/framework.h>
 #include "fossil/io/soap.h"
 
-FOSSIL_SUITE(c_soap_challenges);
+FOSSIL_SUITE(cpp_soap_challenges);
 
-FOSSIL_SETUP(c_soap_challenges) { }
-FOSSIL_TEARDOWN(c_soap_challenges) { }
+FOSSIL_SETUP(cpp_soap_challenges) { }
+FOSSIL_TEARDOWN(cpp_soap_challenges) { }
 
 // --------------------------------------
 // Challenge 1: Basic Sanitize
 // --------------------------------------
-FOSSIL_TEST(c_test_soap_sanitize_basic) {
+FOSSIL_TEST(cpp_test_soap_sanitize_basic) {
     /* Goal: Use fossil_io_soap_sanitize to clean up rot-brain language */
     /* Task:
        1. Provide input: "This product is LIT AF and a total W!"
@@ -21,7 +21,7 @@ FOSSIL_TEST(c_test_soap_sanitize_basic) {
 // --------------------------------------
 // Challenge 2: Suggest Proper Alternatives
 // --------------------------------------
-FOSSIL_TEST(c_test_soap_suggest_alternatives) {
+FOSSIL_TEST(cpp_test_soap_suggest_alternatives) {
     /* Goal: Suggest professional alternatives for slang and memes */
     /* Task:
        1. Provide input: "Bruh, this is hella based."
@@ -33,7 +33,7 @@ FOSSIL_TEST(c_test_soap_suggest_alternatives) {
 // --------------------------------------
 // Challenge 3: Detect Tone
 // --------------------------------------
-FOSSIL_TEST(c_test_soap_detect_tone) {
+FOSSIL_TEST(cpp_test_soap_detect_tone) {
     /* Goal: Learn to detect tone of input text */
     /* Task:
        1. Provide inputs: "I am writing to inform you..." and "lol this sucks".
@@ -45,7 +45,7 @@ FOSSIL_TEST(c_test_soap_detect_tone) {
 // --------------------------------------
 // Challenge 4: Grammar Check & Correction
 // --------------------------------------
-FOSSIL_TEST(c_test_soap_grammar_check_and_correct) {
+FOSSIL_TEST(cpp_test_soap_grammar_check_and_correct) {
     /* Goal: Detect and fix grammatical mistakes */
     /* Task:
        1. Provide input: "He go to store yesterday."
@@ -57,7 +57,7 @@ FOSSIL_TEST(c_test_soap_grammar_check_and_correct) {
 // --------------------------------------
 // Challenge 5: Ragebait, Clickbait, Spam
 // --------------------------------------
-FOSSIL_TEST(c_test_soap_detect_ragebait_clickbait_spam) {
+FOSSIL_TEST(cpp_test_soap_detect_ragebait_clickbait_spam) {
     /* Goal: Detect manipulative content */
     /* Task:
        1. Test ragebait: "Outrageous! You won't believe what happened!"
@@ -70,7 +70,7 @@ FOSSIL_TEST(c_test_soap_detect_ragebait_clickbait_spam) {
 // --------------------------------------
 // Challenge 6: Detect Specific Social/Political Content
 // --------------------------------------
-FOSSIL_TEST(c_test_soap_detect_social_political) {
+FOSSIL_TEST(cpp_test_soap_detect_social_political) {
     /* Goal: Learn to classify sensitive categories */
     /* Task:
        1. Provide input texts with woke, snowflake, offensive, political phrases.
@@ -81,7 +81,7 @@ FOSSIL_TEST(c_test_soap_detect_social_political) {
 // --------------------------------------
 // Challenge 7: Hype & Marketing Detection
 // --------------------------------------
-FOSSIL_TEST(c_test_soap_detect_hype_and_marketing) {
+FOSSIL_TEST(cpp_test_soap_detect_hype_and_marketing) {
     /* Goal: Identify over-the-top marketing language */
     /* Task:
        1. Input: "This revolutionary breakthrough will change everything forever!"
@@ -93,7 +93,7 @@ FOSSIL_TEST(c_test_soap_detect_hype_and_marketing) {
 // --------------------------------------
 // Challenge 8: Sarcasm, Formality, Neutrality
 // --------------------------------------
-FOSSIL_TEST(c_test_soap_detect_sarcasm_formality_neutral) {
+FOSSIL_TEST(cpp_test_soap_detect_sarcasm_formality_neutral) {
     /* Goal: Test advanced tone classification */
     /* Task:
        1. Provide sarcastic input: "Oh, great, another meeting. Yay."
@@ -106,7 +106,7 @@ FOSSIL_TEST(c_test_soap_detect_sarcasm_formality_neutral) {
 // --------------------------------------
 // Challenge 9: Custom Filtering
 // --------------------------------------
-FOSSIL_TEST(c_test_soap_custom_filter) {
+FOSSIL_TEST(cpp_test_soap_custom_filter) {
     /* Goal: Learn to add and use custom word filters */
     /* Task:
        1. Add a custom filter for the word "spoiler".
@@ -119,7 +119,7 @@ FOSSIL_TEST(c_test_soap_custom_filter) {
 // --------------------------------------
 // Challenge 10: Combined Pipeline
 // --------------------------------------
-FOSSIL_TEST(c_test_soap_full_pipeline) {
+FOSSIL_TEST(cpp_test_soap_full_pipeline) {
     /* Goal: Build a mini content moderation pipeline */
     /* Task:
        1. Input: "This is the ultimate revolutionary breakthrough! Click here to win BIG!"
@@ -131,17 +131,17 @@ FOSSIL_TEST(c_test_soap_full_pipeline) {
 // --------------------------------------
 // Register All Tests
 // --------------------------------------
-FOSSIL_TEST_GROUP(c_soap_tests) {
-    FOSSIL_TEST_ADD(c_soap_challenges, c_test_soap_sanitize_basic);
-    FOSSIL_TEST_ADD(c_soap_challenges, c_test_soap_suggest_alternatives);
-    FOSSIL_TEST_ADD(c_soap_challenges, c_test_soap_detect_tone);
-    FOSSIL_TEST_ADD(c_soap_challenges, c_test_soap_grammar_check_and_correct);
-    FOSSIL_TEST_ADD(c_soap_challenges, c_test_soap_detect_ragebait_clickbait_spam);
-    FOSSIL_TEST_ADD(c_soap_challenges, c_test_soap_detect_social_political);
-    FOSSIL_TEST_ADD(c_soap_challenges, c_test_soap_detect_hype_and_marketing);
-    FOSSIL_TEST_ADD(c_soap_challenges, c_test_soap_detect_sarcasm_formality_neutral);
-    FOSSIL_TEST_ADD(c_soap_challenges, c_test_soap_custom_filter);
-    FOSSIL_TEST_ADD(c_soap_challenges, c_test_soap_full_pipeline);
+FOSSIL_TEST_GROUP(cpp_soap_tests) {
+    FOSSIL_TEST_ADD(cpp_soap_challenges, cpp_test_soap_sanitize_basic);
+    FOSSIL_TEST_ADD(cpp_soap_challenges, cpp_test_soap_suggest_alternatives);
+    FOSSIL_TEST_ADD(cpp_soap_challenges, cpp_test_soap_detect_tone);
+    FOSSIL_TEST_ADD(cpp_soap_challenges, cpp_test_soap_grammar_check_and_correct);
+    FOSSIL_TEST_ADD(cpp_soap_challenges, cpp_test_soap_detect_ragebait_clickbait_spam);
+    FOSSIL_TEST_ADD(cpp_soap_challenges, cpp_test_soap_detect_social_political);
+    FOSSIL_TEST_ADD(cpp_soap_challenges, cpp_test_soap_detect_hype_and_marketing);
+    FOSSIL_TEST_ADD(cpp_soap_challenges, cpp_test_soap_detect_sarcasm_formality_neutral);
+    FOSSIL_TEST_ADD(cpp_soap_challenges, cpp_test_soap_custom_filter);
+    FOSSIL_TEST_ADD(cpp_soap_challenges, cpp_test_soap_full_pipeline);
 
-    FOSSIL_TEST_REGISTER(c_soap_challenges);
+    FOSSIL_TEST_REGISTER(cpp_soap_challenges);
 }
