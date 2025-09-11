@@ -42,7 +42,7 @@ int main(void) {
     }
 
     // Close the file after reading is complete
-    fossil_io_fclose(file);
+    fossil_fstream_close(file);
 
     // Return 0 to indicate successful execution
     return 0;

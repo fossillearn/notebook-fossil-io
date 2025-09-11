@@ -24,18 +24,16 @@
  * @return int Returns 0 on success, or 1 if the file could not be opened.
  */
 int main(void) {
-    fossil_fstream_t *file; // File stream pointer for reading the file
-    fossil_fstream_open(file, "sample.txt", "r"); // Open "sample.txt" in read mode
-    if (!file) return 1; // If file opening fails, return error code 1
+    fossil_fstream_t *file = nullptr;
+    // Use the C++ API to open the file
+    if (fossil::io::Stream::open(file, "sample.txt", "r") != 0 || !file) return 1;
 
-    char buffer[128]; // Buffer to store each line read from the file
-    int error; // Variable to hold error code from reading operation
-    // Loop to read lines from the file until end of file or error
-    while (fossil_io_gets_from_stream_ex(buffer, sizeof(buffer), file, &error)) {
-        fossil_io_printf("Line: %s", buffer); // Output the read line to the console
+    char buffer[128];
+    int error;
+    while (fossil::io::Input::gets_from_stream_ex(buffer, sizeof(buffer), file, &error)) {
+        fossil::io::Output::printf("Line: %s", buffer);
     }
-    // If end of file is reached, print a message
-    if (error == EOF) fossil_io_printf("\nEnd of file reached.\n");
-    fossil_fstream_close(file); // Close the file to release resources
-    return 0; // Return success code
+    if (error == EOF) fossil::io::Output::printf("\nEnd of file reached.\n");
+    fossil::io::Stream::close(file);
+    return 0;
 }
