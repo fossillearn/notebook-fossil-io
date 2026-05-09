@@ -1,0 +1,42 @@
+name: Meson CI
+
+on:
+  schedule:
+    - cron: '15 21 * * *'
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build and Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python3 -m pip install meson==1.8.0 ninja
+      - name: Configure Project
+        run: meson setup builddir/
+        env:
+          CC: gcc
+      - name: Run Tests
+        run: meson test -C builddir -v --test-args='show --mode tree --result fail'
+      - name: Upload Test Log
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: ${{ matrix.os }}_Meson_Testlog
+          path: builddir/meson-logs/testlog.txt
+
+
