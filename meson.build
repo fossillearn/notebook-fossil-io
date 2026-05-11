@@ -1,4 +1,4 @@
-project('Notebook', 'c', 'cpp',
+project('Notebook Fossil IO', 'c', 'cpp',
     meson_version: '>=1.8.0',
     license: 'MPL-2.0',
     version: '0.1.0',
